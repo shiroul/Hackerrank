@@ -17,36 +17,35 @@ import sys
 #
 
 def workbook(n, k, arr):
-    special = 0
-    page = 1
-    problem = 1
+
+    page = 0
+    output = 0
 
     for x in arr:
+        maxPage = int(x/k) + (x%k>0)
         problem = 1
-        temp = x/ k
-        r = x
-        print(r)
-        if temp.is_integer():
-            temp = int(temp)
-        else:
-            temp = int(temp) + 1
-
-        for y in range(1, temp+1):
-            if problem>page:
-                page = page + temp-y +1
-                break
-            if int(r/k):
-                if page>=problem and page<=k*y:
-                    special+=1
-            else:
-                if page>=problem and page<=r:
-                    special+=1
-            r-=k
-            print(r)
+        for y in range(1, maxPage+1):
             page+=1
-            problem+=k
-            input("Press Enter to continue...")
-    return special
+            print('problem = ', problem, 'page = ', page, 'x = ', x, 'y = ', y)
+            if problem > page:
+                page+=maxPage-y
+                break
+            
+            if x>k:
+                x-=k
+                if page>= problem and page<=y*k:
+                    output+=1
+                    print('pop')
+                problem+=k
+                continue
+            if page>= problem and page<problem+x:
+                print(page, problem, x, y)
+                output+=1
+                print('pop')
+            
+    return output
+                
+
             
 
     # Write your code here
@@ -56,9 +55,9 @@ if __name__ == '__main__':
 
     # first_multiple_input = input().rstrip().split()
 
-    n = 90
+    n = 5
 
-    k = 29
+    k = 3
 
     arr = list(map(int, input().rstrip().split()))
 
