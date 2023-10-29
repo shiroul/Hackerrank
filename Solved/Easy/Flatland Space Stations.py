@@ -9,31 +9,31 @@ import sys
 # Complete the flatlandSpaceStations function below.
 def flatlandSpaceStations(n, c):
     c.sort()
-    index = 0
     maximum = 0
     s = 0
+    index = 0
     any = 0
-    for x in range(0, n):
-        if x == c[index]:
-            index+=1
-            if index==len(c):
-                s = n-x
-                break
-            if any:
-                temp = int(s/2 + (s%2>0))
-            else:
-                temp = s
-                any = 1
 
-            if temp> maximum:
-                maximum = temp 
+    for x in range(n):
+        if x == c[index]:
+            if any:
+                if int(s/2) + (s%2>0) > maximum:
+                    maximum = int(s/2) + (s%2>0)
+                s=0
+            elif s>=maximum:
+                any = 1
+                maximum = s
+            index+=1
+            if index == len(c):
+                s = n-c[index-1]-1
+                break
             s=0
             continue
         s+=1
     if s>maximum:
         return s
     return maximum
-        
+
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
