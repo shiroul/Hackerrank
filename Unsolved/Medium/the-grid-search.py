@@ -16,10 +16,25 @@ import sys
 #
 
 def gridSearch(G, P):
+    index = 0
+    temp = ''
+    for x in range(len(G)):
+        # index+=1
+        # if P[0] in G[x]:
+        #     for y in range(1, len(P)):
+        #         if P[y] in G[index]:
+        #             index+=1
+        #             continue
+        #         return 'NO'
+        #     return 'YES'
+        if P[0] in G[x]:
+            for y in P[0]:
+                if 
+
     # Write your code here
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     t = int(input().strip())
 
@@ -49,7 +64,8 @@ if __name__ == '__main__':
             P.append(P_item)
 
         result = gridSearch(G, P)
+        print(result)
 
-        fptr.write(result + '\n')
+    #     fptr.write(result + '\n')
 
-    fptr.close()
+    # fptr.close()
