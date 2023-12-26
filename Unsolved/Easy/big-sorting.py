@@ -14,22 +14,28 @@ import sys
 #
 
 def bigSorting(unsorted):
-    if len(unsorted) < 1:
-        return unsorted
-    index = -1
-    pivot = int(unsorted[-1])
-    for x in range(len(unsorted) - 1):
-        if len(unsorted[-1]) > len(unsorted[x]):
-            index+=1
-            unsorted[x], unsorted[index] = unsorted[index], unsorted[x]
-            continue
+    # if len(unsorted) < 1:
+    #     return unsorted
+    # index = -1
+    # pivot = int(unsorted[-1])
+    # for x in range(len(unsorted) - 1):
+    #     if len(unsorted[-1]) > len(unsorted[x]):
+    #         index+=1
+    #         unsorted[x], unsorted[index] = unsorted[index], unsorted[x]
+    #         continue
 
-        if pivot > int(unsorted[x]):
-            index+=1
-            unsorted[x], unsorted[index] = unsorted[index], unsorted[x]
+    #     if pivot > int(unsorted[x]):
+    #         index+=1
+    #         unsorted[x], unsorted[index] = unsorted[index], unsorted[x]
     
-    return bigSorting(unsorted[:index+1]) + [pivot] + bigSorting(unsorted[index+1:-1])
+    # return bigSorting(unsorted[:index+1]) + [pivot] + bigSorting(unsorted[index+1:-1])
     # Write your code here
+
+    return sorted(unsorted, key=lambda x: (len(x), x))
+
+    #will sorted based on len of string x then if it have same len then will sort by string x it self
+    
+    #credit @thinhproee
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
